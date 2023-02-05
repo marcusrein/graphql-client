@@ -1,0 +1,16 @@
+query VoteQuery {
+	votingStrategies {
+		strategyName
+		strategyAddress
+		votes(orderBy: amount) {
+			amount
+			createdAt
+			from
+			id
+			projectId
+			to
+			token
+			version
+		}
+	}
+}

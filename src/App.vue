@@ -8,7 +8,6 @@
 				<li>{{ vote.from }}</li>
 				<li>{{ vote.to }}</li>
 				<li>{{ vote.token }}</li>
-
 				<li>{{ vote.amount }}</li>
 				<li>{{ vote.createdAt }}</li>
 				<li>{{ vote.id }}</li>
@@ -21,26 +20,8 @@
 
 <script>
 import { useQuery } from "@vue/apollo-composable";
-import gql from "graphql-tag";
-
-const ALL_VOTES_QUERY = gql`
-	query VoteQuery {
-		votingStrategies {
-			strategyName
-			strategyAddress
-			votes(orderBy: amount) {
-				amount
-				createdAt
-				from
-				id
-				projectId
-				to
-				token
-				version
-			}
-		}
-	}
-`;
+import ALL_VOTES_QUERY from "./graphql/allVotes.query.gql";
+// import getFirstTransactionDate from "./addressCreated";
 
 // const ALL_BOOKS_QUERY = gql`
 // 	query AllBooks {
@@ -56,7 +37,15 @@ export default {
 	setup() {
 		const { result } = useQuery(ALL_VOTES_QUERY);
 
-		console.log(result);
+		// const addressArray = [];
+
+		// for (const strategy of result.votingStrategies) {
+		// 	for (const vote of strategy.votes) {
+		// 		addressArray.push(vote.from);
+		// 	}
+		// }
+		// console.log("THIS IS THE ADDRESSSARRYYY%$$%$%$ " + addressArray);
+
 		return { result };
 	},
 };

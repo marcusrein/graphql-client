@@ -73,6 +73,7 @@ const ALL_BOOKS_QUERY = gql`
 const app = createApp({
 	setup() {
 		provide(DefaultApolloClient, apolloClient);
+		provide();
 	},
 	render: () => h(App),
 });
